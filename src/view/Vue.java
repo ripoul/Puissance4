@@ -11,10 +11,6 @@ import javax.swing.*;
 
 import java.awt.*;
 
-//proxyPort 1 à 65535
-//http://proxyetu.iut-nantes.univ-nantes.prive:3128
-
-
 public class Vue {
 
 
@@ -23,17 +19,15 @@ public class Vue {
     private JPanel[][] lbls;
     private ImageIcon jB, jR;
     private JPanel pannelJeu;
+    private JFrame f;
 
     public Vue(){
-        JFrame f = new JFrame("Jeu du Puissance 4");
+        f = new JFrame("Jeu du Puissance 4");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         jB = new ImageIcon(new ImageIcon("src/view/img/jB.jpg").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
         jR = new ImageIcon(new ImageIcon("src/view/img/jR.jpg").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 
-
-        JPanel pannel = new JPanel();
-        pannel.setLayout(new BorderLayout());
 
         pannelJeu = new JPanel();
         jeu=new Puissance4();
@@ -56,15 +50,12 @@ public class Vue {
             for(int j=0; j< 10;j++){
                 lbls[i][j]=new JPanel();
                 pannelJeu.add(lbls[i][j]);
-
                 lbls[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-
             }
         }
 
 
-        pannel.add(pannelJeu, BorderLayout.CENTER);
-        f.getContentPane().add(pannel);
+        f.getContentPane().add(pannelJeu);
         f.setVisible(true);
         //f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.pack();
@@ -93,7 +84,27 @@ public class Vue {
     }
 
     public void maj() {
-        for(int i=0; i<8; i++) {
+        System.out.println("1");
+        //f.removeAll();
+        pannelJeu.removeAll();
+
+        for(int cpt=0; cpt<10; cpt++){
+            lbls[0][cpt]=new JPanel();
+            pannelJeu.add(lbls[0][cpt]);
+        }
+
+        if(jeu.getTour()==Color.blue){
+            JLabel bl=new JLabel(jB);
+            lbls[0][jeu.getCurentC()].add(bl);
+            //pannelJeu.add(lbls[0][/*jeu.getCurentC()*/3]);
+            System.out.println(jeu.getCurentC());
+        }else{
+            JLabel bl=new JLabel(jR);
+            lbls[0][jeu.getCurentC()].add(bl);
+            //pannelJeu.add(lbls[0][jeu.getCurentC()]);
+        }
+
+        for(int i=0; i<7; i++) {
             for (int j = 0; j < 10; j++) {
                 lbls[i+1][j]=new JPanel();
                 if(jeu.getCase(i, j)!= null){
@@ -113,22 +124,19 @@ public class Vue {
             }
         }
 
-        for(int cpt=0; cpt<10; cpt++){
-            lbls[0][cpt]=new JPanel();
-            pannelJeu.add(lbls[0][cpt]);
-        }
-
-        if(jeu.getTour()==Color.blue){
-            JLabel bl=new JLabel(jB);
-            lbls[0][jeu.getCurentC()].add(bl);
-            pannelJeu.add(lbls[0][jeu.getCurentC()]);
-        }else{
-            JLabel bl=new JLabel(jR);
-            lbls[0][jeu.getCurentC()].add(bl);
-            pannelJeu.add(lbls[0][jeu.getCurentC()]);
+        for(int i=1; i<8; i++){
+            for(int j=0; j< 10;j++){
+                lbls[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+            }
         }
 
 
+        //pannelJeu.repaint();
+        //pannelJeu.revalidate();
+        //f.repaint();
+        f.revalidate();
+
+        //f.add(pannelJeu);
     }
 }
 

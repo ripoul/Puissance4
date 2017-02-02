@@ -23,10 +23,13 @@ public class Puissance4 {
         int cpt=6;
         boolean done = false;
         while(cpt>=0 && !done){
-            if (jeu[cpt][this.curentC]!=null){
+            //System.out.println("1");
+            if (jeu[cpt][this.curentC]==null){
+                //System.out.println("1");
                 jeu[cpt][this.curentC]=tour;
                 done=true;
             }else{
+                //System.out.println("2");
                 if(cpt==0){
                     throw new PlacementException("colone déja pleine");
                 }
@@ -36,7 +39,7 @@ public class Puissance4 {
     }
 
     public void droite()throws DeplacementException{
-        if(curentC<10){
+        if(curentC!=9){
             curentC++;
         }
         else{
@@ -45,8 +48,8 @@ public class Puissance4 {
     }
 
     public void gauche()throws DeplacementException{
-        if(curentC>0){
-            curentC--;
+        if(curentC!=0){
+            curentC=curentC-1;
         }
         else{
             throw new  DeplacementException("deplacement impossible or du tableau");
@@ -121,7 +124,7 @@ public class Puissance4 {
                     //parcour colone
 
                     while(boucleC<4 && !fin){
-                        if(i+boucleC>7 || i+boucleC<0){//sort du tableau
+                        if(i+boucleC>6 || i+boucleC<0){//sort du tableau
                             fin=true;
                         }else{
                             if(jeu[i+boucleC][j]==null || jeu[i+boucleC][j]!=obj){//fin de chaine
@@ -138,7 +141,7 @@ public class Puissance4 {
                     fin=false;
 
                     while(boucleC<4 && !fin){
-                        if(i-boucleC>7 || i-boucleC<0){//sort du tableau
+                        if(i-boucleC>6 || i-boucleC<0){//sort du tableau
                             fin=true;
                         }else{
                             if(jeu[i-boucleC][j]==null || jeu[i-boucleC][j]!=obj){//fin de chaine
@@ -155,7 +158,7 @@ public class Puissance4 {
                     //parcour diagonal
 
                     while(boucleD<4 && !fin){
-                        if(i+boucleD>7 || i+boucleD<0 || j+boucleD>10 || j+boucleD<0){//sort du tableau
+                        if(i+boucleD>6 || i+boucleD<0 || j+boucleD>10 || j+boucleD<0){//sort du tableau
                             fin=true;
                         }else{
                             if(jeu[i+boucleD][j+boucleD]==null || jeu[i+boucleD][j+boucleD]!=obj){//fin de chaine
@@ -172,7 +175,7 @@ public class Puissance4 {
                     fin=false;
 
                     while(boucleD<4 && !fin){
-                        if(i-boucleD>7 || i-boucleD<0 || j-boucleD>10 || j-boucleD<0){//sort du tableau
+                        if(i-boucleD>6 || i-boucleD<0 || j-boucleD>10 || j-boucleD<0){//sort du tableau
                             fin=true;
                         }else{
                             if(jeu[i-boucleD][j+boucleD]==null || jeu[i-boucleD][j+boucleD]!=obj){//fin de chaine
