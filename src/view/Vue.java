@@ -22,6 +22,7 @@ public class Vue {
     private Puissance4 jeu;
     private JPanel[][] lbls;
     private ImageIcon jB, jR;
+    private JPanel pannelJeu;
 
     public Vue(){
         JFrame f = new JFrame("Jeu du Puissance 4");
@@ -34,13 +35,23 @@ public class Vue {
         JPanel pannel = new JPanel();
         pannel.setLayout(new BorderLayout());
 
-        JPanel pannelJeu = new JPanel();
+        pannelJeu = new JPanel();
         jeu=new Puissance4();
         f.addKeyListener(new Ctrl(jeu, this));
 
-        pannelJeu.setLayout(new GridLayout(7,11));
+        pannelJeu.setLayout(new GridLayout(8,10));
 
         lbls=new JPanel[8][10];
+
+        for(int cpt=0; cpt<10; cpt++){
+            lbls[0][cpt]=new JPanel();
+            pannelJeu.add(lbls[0][cpt]);
+        }
+
+        JLabel tmp=new JLabel(jB);
+        lbls[0][5].add(tmp);
+
+
         for(int i=1; i<8; i++){
             for(int j=0; j< 10;j++){
                 lbls[i][j]=new JPanel();
@@ -52,17 +63,12 @@ public class Vue {
         }
 
 
-
-        JLabel bl=new JLabel(jB);
-        lbls[0][5].add(bl);
-
-
         pannel.add(pannelJeu, BorderLayout.CENTER);
         f.getContentPane().add(pannel);
         f.setVisible(true);
         //f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.pack();
-        f.setSize(500, 500);
+        f.setSize(600, 600);
         //f.setExtendedState(Frame.MAXIMIZED_BOTH);
 
     }
@@ -94,24 +100,32 @@ public class Vue {
                     if(jeu.getCase(i, j)==Color.BLUE){
                         JLabel bl=new JLabel(jB);
                         lbls[i+1][j].add(bl);
+                        pannelJeu.add(lbls[i+1][j]);
+
                     }else{
                         JLabel bl=new JLabel(jR);
                         lbls[i+1][j].add(bl);
+                        pannelJeu.add(lbls[i+1][j]);
                     }
+                }else{
+                    pannelJeu.add(lbls[i+1][j]);
                 }
             }
         }
 
         for(int cpt=0; cpt<10; cpt++){
             lbls[0][cpt]=new JPanel();
+            pannelJeu.add(lbls[0][cpt]);
         }
 
         if(jeu.getTour()==Color.blue){
             JLabel bl=new JLabel(jB);
             lbls[0][jeu.getCurentC()].add(bl);
+            pannelJeu.add(lbls[0][jeu.getCurentC()]);
         }else{
             JLabel bl=new JLabel(jR);
             lbls[0][jeu.getCurentC()].add(bl);
+            pannelJeu.add(lbls[0][jeu.getCurentC()]);
         }
 
 
