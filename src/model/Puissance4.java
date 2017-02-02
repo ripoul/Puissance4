@@ -192,4 +192,8 @@ public class Puissance4 {
         }
         return false;
     }
+
+    public int getCurentC() {
+        return curentC;
+    }
 }

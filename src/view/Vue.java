@@ -20,7 +20,7 @@ public class Vue {
 
     //modele
     private Puissance4 jeu;
-    private JPanel[] lbls;
+    private JPanel[][] lbls;
     private ImageIcon jB, jR;
 
     public Vue(){
@@ -40,19 +40,21 @@ public class Vue {
 
         pannelJeu.setLayout(new GridLayout(7,11));
 
-        lbls=new JPanel[77];
-        for(int i=0; i<77; i++){
-            lbls[i]=new JPanel();
-            pannelJeu.add(lbls[i]);
-            if(i>=11){
-                lbls[i].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        lbls=new JPanel[8][10];
+        for(int i=1; i<8; i++){
+            for(int j=0; j< 10;j++){
+                lbls[i][j]=new JPanel();
+                pannelJeu.add(lbls[i][j]);
+
+                lbls[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+
             }
         }
 
 
 
         JLabel bl=new JLabel(jB);
-        lbls[5].add(bl);
+        lbls[0][5].add(bl);
 
 
         pannel.add(pannelJeu, BorderLayout.CENTER);
@@ -85,21 +87,34 @@ public class Vue {
     }
 
     public void maj() {
-        int cpt=11;
-        for(int i=0; i<7; i++) {
+        for(int i=0; i<8; i++) {
             for (int j = 0; j < 10; j++) {
-                if(jeu.getCase(i, j)==null){
-                    lbls[cpt]=new JPanel();
-                }else{
+                lbls[i+1][j]=new JPanel();
+                if(jeu.getCase(i, j)!= null){
                     if(jeu.getCase(i, j)==Color.BLUE){
                         JLabel bl=new JLabel(jB);
-                        lbls[cpt].add(bl);
+                        lbls[i+1][j].add(bl);
                     }else{
                         JLabel bl=new JLabel(jR);
-                        lbls[cpt].add(bl);
+                        lbls[i+1][j].add(bl);
                     }
                 }
             }
         }
+
+        for(int cpt=0; cpt<10; cpt++){
+            lbls[0][cpt]=new JPanel();
+        }
+
+        if(jeu.getTour()==Color.blue){
+            JLabel bl=new JLabel(jB);
+            lbls[0][jeu.getCurentC()].add(bl);
+        }else{
+            JLabel bl=new JLabel(jR);
+            lbls[0][jeu.getCurentC()].add(bl);
+        }
+
+
     }
 }
+
