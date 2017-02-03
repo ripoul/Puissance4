@@ -35,7 +35,7 @@ public class Ctrl implements KeyListener{
             try{
                 jeu.put();
                 jeu.changeTour();
-                JOptionPane.showMessageDialog(null,"changement joueur");
+                vue.maj();
             }catch (PlacementException e) {
                 //e.printStackTrace();
                 JOptionPane.showMessageDialog(null,"colone déja pleine","ERREUR",JOptionPane.ERROR_MESSAGE);
