@@ -89,7 +89,7 @@ public class Puissance4 {
                     //parcour de la ligne colone par colone
                     //gauche
                     while(boucleL<4 && !fin){
-                        if(j+boucleL>10 || j+boucleL<0){//sort du tableau
+                        if((j+boucleL)>=10 || j+boucleL<0){//sort du tableau
                             fin=true;
                         }else{
                             if(jeu[i][j+boucleL]==null || jeu[i][j+boucleL]!=obj){//fin de chaine
@@ -106,7 +106,7 @@ public class Puissance4 {
                     fin=false;
 
                     while(boucleL<4 && !fin){
-                        if(j-boucleL>10 || j-boucleL<0){//sort du tableau
+                        if(j-boucleL>=10 || j-boucleL<0){//sort du tableau
                             fin=true;
                         }else{
                             if(jeu[i][j-boucleL]==null || jeu[i][j-boucleL]!=obj){//fin de chaine
@@ -158,7 +158,7 @@ public class Puissance4 {
                     //parcour diagonal
 
                     while(boucleD<4 && !fin){
-                        if(i+boucleD>6 || i+boucleD<0 || j+boucleD>10 || j+boucleD<0){//sort du tableau
+                        if(i+boucleD>6 || i+boucleD<0 || j+boucleD>=10 || j+boucleD<0){//sort du tableau
                             fin=true;
                         }else{
                             if(jeu[i+boucleD][j+boucleD]==null || jeu[i+boucleD][j+boucleD]!=obj){//fin de chaine
@@ -176,7 +176,7 @@ public class Puissance4 {
                     cptColone=1;
 
                     while(boucleD<4 && !fin){
-                        if(i-boucleD>6 || i-boucleD<0 || j-boucleD>10 || j-boucleD<0){//sort du tableau
+                        if(i-boucleD>6 || i-boucleD<0 || j+boucleD>=10 || j-boucleD<0){//sort du tableau
                             fin=true;
                         }else{
                             if(jeu[i-boucleD][j+boucleD]==null || jeu[i-boucleD][j+boucleD]!=obj){//fin de chaine
