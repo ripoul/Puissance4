@@ -84,7 +84,6 @@ public class Vue {
     }
 
     public void maj() {
-        System.out.println("1");
         //f.removeAll();
         pannelJeu.removeAll();
 
@@ -97,7 +96,7 @@ public class Vue {
             JLabel bl=new JLabel(jB);
             lbls[0][jeu.getCurentC()].add(bl);
             //pannelJeu.add(lbls[0][/*jeu.getCurentC()*/3]);
-            System.out.println(jeu.getCurentC());
+            //System.out.println(jeu.getCurentC());
         }else{
             JLabel bl=new JLabel(jR);
             lbls[0][jeu.getCurentC()].add(bl);

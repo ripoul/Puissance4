@@ -67,7 +67,6 @@ public class Ctrl implements KeyListener{
 
         if(keyEvent.getKeyCode()==VK_F1){
             System.out.println("F1");
-
         }
     }
 

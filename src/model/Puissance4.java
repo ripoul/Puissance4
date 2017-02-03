@@ -173,6 +173,7 @@ public class Puissance4 {
 
                     boucleD=1;
                     fin=false;
+                    cptColone=1;
 
                     while(boucleD<4 && !fin){
                         if(i-boucleD>6 || i-boucleD<0 || j-boucleD>10 || j-boucleD<0){//sort du tableau
