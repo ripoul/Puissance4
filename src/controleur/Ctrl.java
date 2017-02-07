@@ -31,7 +31,7 @@ public class Ctrl implements KeyListener{
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         if (keyEvent.getKeyCode()==VK_DOWN){
-            System.out.println("bas");
+            //System.out.println("bas");
             try{
                 jeu.put();
                 jeu.changeTour();
@@ -46,7 +46,7 @@ public class Ctrl implements KeyListener{
         }
 
         if (keyEvent.getKeyCode()==VK_LEFT){
-            System.out.println("gauche");
+            //System.out.println("gauche");
             try {
                 jeu.gauche();
                 vue.maj();
@@ -56,7 +56,7 @@ public class Ctrl implements KeyListener{
         }
 
         if (keyEvent.getKeyCode()==VK_RIGHT){
-            System.out.println("droite");
+            //System.out.println("droite");
             try {
                 jeu.droite();
                 vue.maj();
@@ -66,7 +66,7 @@ public class Ctrl implements KeyListener{
         }
 
         if(keyEvent.getKeyCode()==VK_F1){
-            System.out.println("F1");
+            //System.out.println("F1");
         }
     }
 
